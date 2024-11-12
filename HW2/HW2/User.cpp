@@ -65,8 +65,30 @@ unsigned int User::getAge() const
 input: none.
 output: his device list
 */
-DevicesList& User::getDevices() const
+const DevicesList& User::getDevices() const
 {
-	DevicesList& refrenceList = this->list;
+	return this->list;
 }
 
+/* function that checks if all the user device's are on 
+input: none. 
+output: true if all are on false if not 
+*/
+bool User::checkIfDevicesAreOn() const
+{  
+	
+	DeviceNode* head = this->list.get_first();  
+	DeviceNode* temp = head;
+
+	while (temp)
+	{
+		if ((*temp).get_data().isActive() == false)
+		{
+			return false;
+		} 
+		temp = ((*temp).get_next());
+	}  
+
+	
+	return true;
+}
