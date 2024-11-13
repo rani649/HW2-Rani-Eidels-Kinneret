@@ -1,5 +1,7 @@
+#pragma once
+
 #include <string>
-#include "DeviceList.h"
+#include "DeviceList.h" 
 
 class User
 {

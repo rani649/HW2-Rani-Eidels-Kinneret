@@ -1,5 +1,5 @@
 #include "Device.h" 
-
+#include <iostream>
 
 /* function that checkes if the device is active 
 input: none. 

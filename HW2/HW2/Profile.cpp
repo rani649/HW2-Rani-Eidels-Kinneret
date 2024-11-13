@@ -1,4 +1,5 @@
-#include "Profile.h"
+#include "Profile.h" 
+#include <iostream>
 
 /* function that init the user's profile 
 input: the owner id, username and age. 
@@ -100,14 +101,15 @@ std::string Profile::getFriendsWithSameNameLength() const
 	std::string friendsWithSameLength = "";  
 	std::string friendName = "";
 	int i = 0; 
-	int count = 0;
+	int count = 0; 
+
 	
 	for (i = 0; i < friends.size(); i++)
 	{ 
 		count = 0; 
 		friendName = "";
 
-		while (friends[i] != ',')
+		while (i < friends.size() && friends[i] != ',')
 		{
 			friendName += friends[i];
 			count++; 
@@ -117,7 +119,12 @@ std::string Profile::getFriendsWithSameNameLength() const
 		{
 			friendsWithSameLength += friendName + ",";
 		}
-	} 
+	}  
+
+	if (friendsWithSameLength.size() == 0)
+	{
+		return "";
+	}
 	return friendsWithSameLength.erase(friendsWithSameLength.size() - 1); 
 }
 

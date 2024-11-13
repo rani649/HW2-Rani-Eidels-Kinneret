@@ -1,4 +1,5 @@
-#include "Page.h"
+#include "Page.h" 
+#include <iostream>
 
 /* function init the user posts and status with empty strings 
 input: none. 

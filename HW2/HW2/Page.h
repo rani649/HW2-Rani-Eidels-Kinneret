@@ -1,3 +1,5 @@
+#pragma once
+
 #include <string>
 
 // class that represent a page of user 
