@@ -6,10 +6,19 @@ input: the owner id, username and age.
 ouput: none.
 */
 void Profile::init(User owner)
-{
-	this->owner.init(owner.getID(), owner.getUserName(), owner.getAge()); 
+{  
+	DeviceNode* head = NULL;
+	this->owner.init(owner.getID(), owner.getUserName(), owner.getAge());  
 	this->ownerPage.init(); 
-	this->ownerFriends.init();
+	this->ownerFriends.init();    
+
+	head = owner.getDevices().get_first();  
+
+	while (head)
+	{
+		this->owner.addDevice(head->get_data()); 
+		head = head->get_next();
+	}
 } 
 
 /* function that clears all the profile fields 

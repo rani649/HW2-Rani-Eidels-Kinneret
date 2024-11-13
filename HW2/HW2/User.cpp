@@ -10,7 +10,7 @@ void User::init(unsigned int id, std::string username, unsigned int age)
 	this->id = id; 
 	this->userName = username; 
 	this->age = age;   
-	this->list.init(); 
+	this->list.init();  
 }  
 
 /* function that clears the user profile 

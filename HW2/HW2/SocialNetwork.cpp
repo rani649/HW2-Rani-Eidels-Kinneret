@@ -9,7 +9,7 @@ void SocialNetwork::init(const std::string networkName, const int minAge)
 {
 	this->minAge = minAge; 
 	this->networkName = networkName; 
-	this->list.init();
+	this->list.init(); 
 } 
 
 /* function that clear the social network 
@@ -55,6 +55,40 @@ bool SocialNetwork::addProfile(const Profile profile_to_add)
 	return list.add(profile_to_add);
 } 
 
+/*  function that returns list of windows devices that connected to social network  
+input: none. 
+output: the list.
+*/
+std::string SocialNetwork::getWindowsDevices() const
+{
+	ProfileNode* head = this->list.get_first();  
+	DeviceNode* deviceHead = nullptr; 
+	User user; 
+	std::string windowsDevices = "";
+
+	
+	while (head)
+	{   
+		deviceHead = head->get_data().getOwner().getDevices().get_first();
+
+		while (deviceHead)
+		{ 
+			Device device = deviceHead->get_data();
+			if (device.getOS() == WINDOWS7 || device.getOS() == WINDOWS10 || device.getOS() == WINDOWS11)
+			{
+				windowsDevices += "[" + std::to_string(device.getID()) + ", " + device.getOS() + "]" + ", ";
+			} 
+			deviceHead = deviceHead->get_next();
+		}
+		head = head->get_next();
+	} 
+
+	if (windowsDevices.size() == 0)
+	{
+		return "";
+	} 
+	return windowsDevices.erase(windowsDevices.size() - 2);
+}
 
 
 
